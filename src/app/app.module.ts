@@ -5,14 +5,37 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { AngularFireModule } from 'angularfire2';
+
+// New imports to update based on AngularFire2 version 4
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MemberComponent } from './member/member.component';
+
+// import {GoogleSignInComponent} from 'angular-google-signin';
+
+export const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+}
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
+    // GoogleSignInComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
